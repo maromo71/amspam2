@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+
+class Veiculo {
+    - String placa
+    - String modelo
+    + getPlaca(): String
+}
+
+class Cliente {
+    - String nome
+    - String cpf
+    - boolean mensalista
+    + isMensalista(): boolean
+}
+
+class Registro {
+    - Veiculo veiculo
+    - LocalDateTime entrada
+    - LocalDateTime saida
+    - int numeroVaga
+    + calcularValor(double taxa): double
+}
+
+class GerenciarEstacionamento {
+    - List<Cliente> cadastrados
+    - List<Registro> ocupados
+    - final int TOTAL_VAGAS = 10
+    + main(String[] args)
+    + execRegistrarEntrada()
+    + execRegistrarSaida()
+    + listarVagas()
+}
+
+Veiculo "1" -- "0..1" Cliente
+Registro "1" -- "1" Veiculo
+GerenciarEstacionamento "1" -- "*" Registro
+GerenciarEstacionamento "1" -- "*" Cliente
+
+@enduml

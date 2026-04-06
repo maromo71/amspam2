@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>enunciado.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/etec/amspam2/aula2303/custom-style.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>Este é um excelente exercício para consolidar os fundamentos de <strong>Programação Orientada a Objetos (POO)</strong>, manipulação de datas e coleções em Java.</p>
+<p>Abaixo, o roteiro de um <strong>Laboratório de Desenvolvimento</strong> estruturado para ser executado passo a passo, focando na lógica e na arquitetura, sem entregar o código pronto.</p>
+<hr>
+<h1 id="%F0%9F%9B%A0%EF%B8%8F-laborat%C3%B3rio-sistema-de-gest%C3%A3o-de-estacionamento-console-java">🛠️ Laboratório: Sistema de Gestão de Estacionamento (Console Java)</h1>
+<h2 id="%F0%9F%93%8B-contexto">📋 Contexto</h2>
+<p>Você foi contratado para desenvolver o motor lógico de um totem de autoatendimento para um estacionamento. O sistema deve diferenciar clientes que já possuem cadastro (Mensalistas) de clientes que entram de forma avulsa.</p>
+<hr>
+<h2 id="%F0%9F%8F%97%EF%B8%8F-passo-1-defini%C3%A7%C3%A3o-do-modelo-de-dados-classes">🏗️ Passo 1: Definição do Modelo de Dados (Classes)</h2>
+<p>Crie um pacote chamado <code>modelo</code> e implemente as seguintes classes:</p>
+<ol>
+<li><strong>Classe <code>Veiculo</code></strong>: Deve conter <code>placa</code> (String) e <code>modelo</code> (String).</li>
+<li><strong>Classe <code>Cliente</code></strong>: Deve conter <code>nome</code>, <code>cpf</code> e um booleano <code>isMensalista</code>.
+<ul>
+<li><em>Dica:</em> Um <code>Veiculo</code> pode ter um atributo <code>Cliente dono</code> (opcional).</li>
+</ul>
+</li>
+<li><strong>Classe <code>Vaga</code></strong>: Deve conter <code>numero</code> (int) e um booleano <code>disponivel</code>.</li>
+<li><strong>Classe <code>Registro</code></strong>: Esta é a classe principal de movimentação. Ela deve associar:
+<ul>
+<li>Um <code>Veiculo</code>.</li>
+<li>A <code>Vaga</code> ocupada.</li>
+<li><code>LocalDateTime entrada</code> e <code>LocalDateTime saida</code>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%9A%A6-passo-2-a-classe-de-gerenciamento">🚦 Passo 2: A Classe de Gerenciamento</h2>
+<p>Crie a classe <code>GerenciarEstacionamento</code> no pacote principal. Esta classe será o &quot;cérebro&quot; do aplicativo.</p>
+<ol>
+<li>
+<p><strong>Atributos Globais (Static)</strong>:</p>
+<ul>
+<li>Uma <code>List&lt;Registro&gt;</code> para armazenar os veículos que estão atualmente no estacionamento.</li>
+<li>Uma <code>List&lt;Cliente&gt;</code> para simular um banco de dados de clientes mensalistas já cadastrados.</li>
+<li>Um <code>Scanner</code> global para capturar entradas do usuário.</li>
+<li>Uma constante <code>VALOR_HORA = 10.0</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>O Método <code>main</code></strong>:</p>
+<ul>
+<li>Deve exibir um menu textual (Ex: <code>1-Entrada, 2-Saída, 3-Status, 0-Sair</code>).</li>
+<li>Utilize um laço <code>while</code> e uma estrutura <code>switch-case</code> para chamar os métodos auxiliares.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%A5-passo-3-implementando-a-entrada-execregistrarentrada">📥 Passo 3: Implementando a Entrada (<code>execRegistrarEntrada</code>)</h2>
+<p>Ao selecionar esta opção, o sistema deve:</p>
+<ol>
+<li>Pedir a placa do veículo.</li>
+<li><strong>Verificação de Mensalista:</strong> Percorrer a lista de clientes cadastrados. Se a placa informada pertencer a um carro de um mensalista, o registro deve ser marcado como tal.</li>
+<li><strong>Instanciação:</strong> Criar um novo objeto <code>Registro</code>, capturando o horário atual com <code>LocalDateTime.now()</code>.</li>
+<li><strong>Armazenamento:</strong> Adicionar esse registro na lista de &quot;ocupados&quot;.</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%A4-passo-4-implementando-a-sa%C3%ADda-execregistrarsaida">📤 Passo 4: Implementando a Saída (<code>execRegistrarSaida</code>)</h2>
+<p>Esta é a parte mais complexa da lógica:</p>
+<ol>
+<li>Pedir a placa do veículo que está saindo.</li>
+<li><strong>Localização:</strong> Buscar na lista de &quot;ocupados&quot; o objeto que contém aquela placa.</li>
+<li><strong>Cálculo de Tempo:</strong> Definir o horário de saída (<code>LocalDateTime.now()</code>) e calcular a diferença em relação à entrada.
+<ul>
+<li><em>Dica:</em> Use a classe <code>java.time.Duration</code>.</li>
+</ul>
+</li>
+<li><strong>Cálculo de Valor:</strong> * Se o cliente for <strong>Mensalista</strong>, o valor é R$ 0,00 (considerando que ele já paga mensalmente).
+<ul>
+<li>Se for <strong>Avulso</strong>, multiplique as horas (ou frações) pelo <code>VALOR_HORA</code>.</li>
+</ul>
+</li>
+<li><strong>Finalização:</strong> Exibir o resumo (Tempo permanecido e Valor a pagar) e remover o registro da lista de ocupados.</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%8A-passo-5-relat%C3%B3rio-de-status-listarvagas">📊 Passo 5: Relatório de Status (<code>listarVagas</code>)</h2>
+<p>Implemente um método que percorra a lista de ocupados e exiba de forma organizada:</p>
+<ul>
+<li>Placa do veículo.</li>
+<li>Hora de entrada formatada (Use <code>DateTimeFormatter</code>).</li>
+<li>Se é Mensalista ou Avulso.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%AA-desafios-extras-opcional">🧪 Desafios Extras (Opcional)</h2>
+<ul>
+<li><strong>Validação de Vagas:</strong> Defina um limite máximo de vagas (ex: 10). Se o estacionamento estiver cheio, o método de entrada deve impedir o registro.</li>
+<li><strong>Persistência Simples:</strong> Crie um método <code>popularDados()</code> que já inicia o programa com 2 ou 3 mensalistas cadastrados para facilitar seus testes.</li>
+</ul>
+<p>Para este laboratório, a modelagem deve refletir uma estrutura de <strong>objetos conectados</strong>, onde o foco é a transição do estado do veículo (de &quot;estacionado&quot; para &quot;liberado&quot;) e a identificação do tipo de cliente para fins de cobrança.</p>
+<p>Abaixo está a representação visual e estrutural para guiar o seu desenvolvimento em Java:</p>
+<h3 id="1-modelagem-de-classes-plantuml">1. Modelagem de Classes (PlantUML)</h3>
+<pre class="hljs"><code><div>@startuml
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+
+package &quot;modelo&quot; {
+    class Veiculo {
+        - String placa
+        - String modelo
+        + getPlaca(): String
+    }
+
+    class Cliente {
+        - String nome
+        - String cpf
+        - boolean mensalista
+        + isMensalista(): boolean
+    }
+
+    class Registro {
+        - Veiculo veiculo
+        - LocalDateTime entrada
+        - LocalDateTime saida
+        - double valorPago
+        + calcularTempo(): Duration
+        + setSaida(LocalDateTime)
+    }
+}
+
+package &quot;controle&quot; {
+    class GerenciarEstacionamento {
+        - {static} List&lt;Cliente&gt; mensalistas
+        - {static} List&lt;Registro&gt; ocupados
+        - {static} final double VALOR_HORA = 10.0
+        + {static} main(String[] args)
+        + {static} execRegistrarEntrada()
+        + {static} execRegistrarSaida()
+        + {static} listarVagas()
+    }
+}
+
+Veiculo &quot;1&quot; o-- &quot;0..1&quot; Cliente : possui &gt;
+Registro &quot;1&quot; *-- &quot;1&quot; Veiculo : refere-se a &gt;
+GerenciarEstacionamento ..&gt; Registro : gerencia &gt;
+GerenciarEstacionamento ..&gt; Cliente : consulta &gt;
+
+@enduml
+</div></code></pre>
+<hr>
+<h3 id="2-estrutura-de-atributos-e-m%C3%A9todos">2. Estrutura de Atributos e Métodos</h3>
+<p>Para realizar a atividade no console, foque nestes detalhes técnicos de cada classe:</p>
+<h4 id="classe-veiculo"><strong>Classe Veiculo</strong></h4>
+<ul>
+<li><strong>Papel:</strong> Armazenar os dados básicos do carro.</li>
+<li><strong>Dica:</strong> No construtor, você pode receber apenas a placa se for um cliente avulso.</li>
+</ul>
+<h4 id="classe-cliente"><strong>Classe Cliente</strong></h4>
+<ul>
+<li><strong>Papel:</strong> Diferenciar quem paga mensalidade de quem paga por hora.</li>
+<li><strong>Lógica:</strong> O atributo <code>mensalista</code> (boolean) será o &quot;divisor de águas&quot; no seu método de cálculo de valor.</li>
+</ul>
+<h4 id="classe-registro"><strong>Classe Registro</strong></h4>
+<ul>
+<li><strong>Papel:</strong> Representar o &quot;ticket&quot; do estacionamento.</li>
+<li><strong>Atributos de Tempo:</strong> Use <code>java.time.LocalDateTime</code> para os atributos <code>entrada</code> e <code>saida</code>.</li>
+<li><strong>Método <code>calcularTempo()</code>:</strong> Dentro deste método, utilize:
+$$Duration.between(entrada, saida)$$
+Isso facilitará muito a obtenção do total de minutos ou horas para a cobrança.</li>
+</ul>
+<h4 id="classe-gerenciarestacionamento-a-fachadaconsole"><strong>Classe GerenciarEstacionamento (A Fachada/Console)</strong></h4>
+<ul>
+<li><strong>Scanner:</strong> Declare como <code>private static Scanner leitor = new Scanner(System.in);</code> para usar em todos os métodos sem precisar instanciar novamente.</li>
+<li><strong>Listas:</strong> Use <code>ArrayList&lt;&gt;</code> para as coleções de <code>mensalistas</code> e <code>ocupados</code>.</li>
+<li><strong>Menu:</strong> Utilize um bloco <code>do-while</code> para manter o programa rodando até que o usuário digite &quot;0&quot;.</li>
+</ul>
+<hr>
+<h3 id="3-fluxo-l%C3%B3gico-sugerido-para-o-execregistrarsaida">3. Fluxo Lógico sugerido para o <code>execRegistrarSaida</code></h3>
+<p>Este é o ponto onde a maioria dos alunos se confunde. Siga esta ordem:</p>
+<ol>
+<li>Peça a placa via <code>scanner.nextLine()</code>.</li>
+<li>Use um laço (<code>for</code> ou <code>stream</code>) para encontrar o <code>Registro</code> na lista de <code>ocupados</code> que tenha aquela placa.</li>
+<li>Se encontrar:
+<ul>
+<li>Atribua <code>LocalDateTime.now()</code> à <code>saida</code>.</li>
+<li>Verifique se o veículo pertence a um <code>Cliente</code> da lista de mensalistas.</li>
+<li>Aplique a regra de negócio: <strong>Se mensalista -&gt; Valor 0 | Se avulso -&gt; Horas x VALOR_HORA</strong>.</li>
+<li>Remova o registro da lista de <code>ocupados</code>.</li>
+</ul>
+</li>
+<li>Se não encontrar, exiba &quot;Veículo não encontrado&quot;.</li>
+</ol>
+
+</body>
+</html>

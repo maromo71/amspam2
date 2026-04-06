@@ -1,0 +1,47 @@
+@startuml
+skinparam monochrome true
+title Fluxo do Gerenciador de Estacionamento
+
+start
+
+repeat
+  :Exibir Menu de Opções;
+  :Ler opção do usuário (Scanner);
+
+  if (Opção == 1 (Entrada)) then (Sim)
+    :Solicitar Placa;
+    if (Placa na lista de Mensalistas?) then (Sim)
+      :Vincular Cliente Mensalista;
+    else (Não)
+      :Criar Registro Avulso;
+    endif
+    :Registrar entrada (LocalDateTime.now());
+    :Adicionar à lista 'ocupados';
+    
+  else if (Opção == 2 (Saída)) then (Sim)
+    :Solicitar Placa;
+    if (Placa encontrada em 'ocupados'?) then (Sim)
+      :Registrar saída (LocalDateTime.now());
+      :Calcular Duration;
+      if (É Mensalista?) then (Sim)
+        :Valor = 0.0;
+      else (Não)
+        :Valor = Horas * VALOR_HORA;
+      endif
+      :Remover de 'ocupados';
+      :Exibir Recibo;
+    else (Não)
+      :Exibir "Veículo não encontrado";
+    endif
+
+  else if (Opção == 3 (Status)) then (Sim)
+    :Listar todos os registros ativos;
+    
+  endif
+
+backward:Retornar ao Menu;
+repeat while (Opção != 0?) is (Sim)
+
+:Encerrar Programa;
+stop
+@enduml
