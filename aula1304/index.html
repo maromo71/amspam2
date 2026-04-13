@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciador de Tarefas</title>
+<link rel="stylesheet" href="estilo.css">
+<body>
+  <h1>Lista de Tarefas</h1>
+
+  <input type="text" id="taskInput" placeholder="Digite uma tarefa">
+  <button onclick="addTask()">Adicionar</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    const API_URL = 'http://localhost:3000/tasks';
+
+    // Buscar tarefas
+    async function loadTasks() {
+      const response = await fetch(API_URL);
+      const tasks = await response.json();
+
+      const list = document.getElementById('taskList');
+      list.innerHTML = '';
+
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = typeof task === 'object' ? JSON.stringify(task) : task;
+        list.appendChild(li);
+      });
+    }
+
+    // Adicionar tarefa
+    async function addTask() {
+      const input = document.getElementById('taskInput');
+      const value = input.value;
+
+      if (!value) {
+        alert('Digite uma tarefa!');
+        return;
+      }
+
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ descricao: value })
+      });
+
+      input.value = '';
+      loadTasks();
+    }
+
+    // Carregar ao iniciar
+    loadTasks();
+  </script>
+
+</body>
+</html>
