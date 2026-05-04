@@ -1,0 +1,12 @@
+.card {
+    background-color: #565454;
+    border: 1px solid #000000;
+    color: whitesmoke;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
